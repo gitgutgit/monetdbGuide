@@ -6,6 +6,7 @@ import random
 
 num_rows = 100000   # Adjust size as needed!
 E_QUERY = "SELECT State, AVG(Severity) AS Avg_Severity FROM crime GROUP BY State"
+
 # Crime table data
 crime_table = pd.DataFrame({
     "Crime_id": range(1, num_rows + 1),
