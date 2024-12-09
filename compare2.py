@@ -91,11 +91,11 @@ except:
 """
 print("DuckDB Query Result:")
 print(duckdb_result)
-print(f"DuckDB Query Time: {duckdb_query_time:.4f} seconds\n")
+print(f"DuckDB Query Time: {duckdb_query_time:.5f} seconds\n")
 
 print("MonetDB Query Result:")
 print(monetdb_result)
-print(f"MonetDB Query Time: {monetdb_query_time:.4f} seconds")
+print(f"MonetDB Query Time: {monetdb_query_time:.5f} seconds")
 
 # Close MonetDB connection
 monetdb_cursor.close()

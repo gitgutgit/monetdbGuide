@@ -4,8 +4,9 @@ import pymonetdb
 import pandas as pd
 import random
 
-# Prepare data for SQLite and MonetDB
-num_rows = 100000  # Number of rows
+num_rows = 100000  # feel free to change size!
+
+
 example_table = pd.DataFrame({
     "ID": range(1, num_rows + 1),
     "Name": [f"Employee_{i}" for i in range(1, num_rows + 1)],
@@ -99,11 +100,11 @@ monetdb_query_time = time.time() - monetdb_start_time
 
 print("SQLite Query Result:")
 print(sqlite_result)
-print(f"SQLite Query Time: {sqlite_query_time:.4f} seconds\n")
+print(f"SQLite Query Time: {sqlite_query_time:.5f} seconds\n")
 
 print("MonetDB Query Result:")
 print(monetdb_result)
-print(f"MonetDB Query Time: {monetdb_query_time:.4f} seconds")
+print(f"MonetDB Query Time: {monetdb_query_time:.5f} seconds")
 
 # Close connections
 sqlite_conn.close()

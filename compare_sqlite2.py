@@ -43,7 +43,7 @@ sqlite_join_query = """
 SELECT e.emp_name, e.salary, d.dept_name
 FROM employees e
 JOIN departments d ON e.department_id = d.dept_id
-WHERE d.location = 'New York' AND e.salary > 80000;
+WHERE d.location = 'New York' AND e.salary > 70000;
 """
 sqlite_cursor = sqlite_conn.cursor()
 sqlite_cursor.execute(sqlite_join_query)
@@ -133,11 +133,11 @@ except:
 
 print("SQLite Join Query Result (First 5 Rows):")
 print(sqlite_result[:5])
-print(f"SQLite Join Query Time: {sqlite_query_time:.4f} seconds\n")
+print(f"SQLite Join Query Time: {sqlite_query_time:.5f} seconds\n")
 
 print("MonetDB Join Query Result (First 5 Rows):")
 print(monetdb_result[:5])
-print(f"MonetDB Join Query Time: {monetdb_query_time:.4f} seconds")
+print(f"MonetDB Join Query Time: {monetdb_query_time:.5f} seconds")
 
 # Close MonetDB and sqlite connection
 sqlite_conn.close()
