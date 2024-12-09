@@ -5,7 +5,7 @@ import pandas as pd
 import random
 
 num_rows = 100000  # Adjust size as needed!
-
+E_QUERY ="SELECT State, AVG(Severity) AS Avg_Severity FROM crime GROUP BY State"
 # Create a Crime-like dataset
 crime_table = pd.DataFrame({
     "Crime_id": range(1, num_rows + 1),
@@ -36,9 +36,8 @@ crime_table.to_sql("crime", sqlite_conn, index=False, if_exists="replace")
 
 # Measure query time in SQLite
 sqlite_start_time = time.time()
-sqlite_query = "SELECT State, AVG(Severity) AS Avg_Severity FROM crime GROUP BY State"
 sqlite_cursor = sqlite_conn.cursor()
-sqlite_cursor.execute(sqlite_query)
+sqlite_cursor.execute(E_QUERY)
 sqlite_result = sqlite_cursor.fetchall()
 sqlite_query_time = time.time() - sqlite_start_time
 
@@ -89,8 +88,7 @@ except pymonetdb.exceptions.OperationalError:
 # Measure query time in MonetDB
 try:
     monetdb_start_time = time.time()
-    monetdb_query = "SELECT State, AVG(Severity) AS Avg_Severity FROM crime GROUP BY State"
-    monetdb_cursor.execute(monetdb_query)
+    monetdb_cursor.execute(E_QUERY)
     monetdb_result = monetdb_cursor.fetchall()
     monetdb_query_time = time.time() - monetdb_start_time
     monetdb_conn.commit()

@@ -1,4 +1,5 @@
 new_env/
 mydbfarm/
 compare3.py
+compare_sqlite2.py
 old

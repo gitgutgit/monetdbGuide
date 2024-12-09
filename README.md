@@ -25,7 +25,7 @@ https://www.monetdb.org/documentation-Aug2024/user-guide/sql-manual/data-loading
 
 sqlite vs monetDB  (Row-based vs column-based)
 
-compare_sqlite.py and compare_sqlite2.py
+compare_sqlite.py
 
 duckDB vs monetDB (Column-based vs Column-based)
 

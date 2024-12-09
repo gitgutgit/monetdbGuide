@@ -5,7 +5,7 @@ import pandas as pd
 import random
 
 num_rows = 100000   # Adjust size as needed!
-
+E_QUERY = "SELECT State, AVG(Severity) AS Avg_Severity FROM crime GROUP BY State"
 # Create a Crime-like dataset
 crime_table = pd.DataFrame({
     "Crime_id": range(1, num_rows + 1),
@@ -37,8 +37,7 @@ duckdb_conn.execute("INSERT INTO crime SELECT * FROM crime_table")
 
 # Measure query time in DuckDB
 duckdb_start_time = time.time()
-duckdb_query = "SELECT State, AVG(Severity) AS Avg_Severity FROM crime GROUP BY State"
-duckdb_result = duckdb_conn.execute(duckdb_query).fetchdf()
+duckdb_result = duckdb_conn.execute(E_QUERY).fetchdf()
 duckdb_query_time = time.time() - duckdb_start_time
 
 """
@@ -89,8 +88,7 @@ except:
 # Measure query time in MonetDB
 try:
     monetdb_start_time = time.time()
-    monetdb_query = "SELECT State, AVG(Severity) AS Avg_Severity FROM crime GROUP BY State"
-    monetdb_cursor.execute(monetdb_query)
+    monetdb_cursor.execute(E_QUERY)
     monetdb_result = monetdb_cursor.fetchall()
     monetdb_query_time = time.time() - monetdb_start_time
     monetdb_conn.commit()
